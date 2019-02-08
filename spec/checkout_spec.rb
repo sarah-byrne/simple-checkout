@@ -1,4 +1,5 @@
 require 'checkout'
+require 'item'
 
 describe Checkout do
   it 'can scan items' do
@@ -10,4 +11,16 @@ describe Checkout do
     checkout = Checkout.new
     checkout.total
   end
+
+    it "can calculate the total from the sum of scanned item prices" do
+      item1 = Item.new(1)
+      item2 = Item.new(4.50)
+      checkout = Checkout.new
+
+      checkout.scan(item1)
+      checkout.scan(item2)
+
+      expect(checkout.total).to eq(item1.price + item2.price)  
+    end
+
 end
