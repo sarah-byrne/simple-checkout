@@ -20,7 +20,17 @@ describe Checkout do
       checkout.scan(item1)
       checkout.scan(item2)
 
-      expect(checkout.total).to eq(item1.price + item2.price)  
+      expect(checkout.total).to eq(item1.price + item2.price)
     end
 
+    it "can display the total in £xx.xx format" do
+      item1 = Item.new(1)
+      item2 = Item.new(4.50)
+      checkout = Checkout.new
+
+      checkout.scan(item1)
+      checkout.scan(item2)
+
+      expect(checkout.display_total).to eq("£5.50")
+    end
 end

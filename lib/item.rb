@@ -4,4 +4,8 @@ class Item
   def initialize(price = 0)
     @price = price
   end
+
+  def display_price
+    "£%.2f" % @price
+  end
 end
